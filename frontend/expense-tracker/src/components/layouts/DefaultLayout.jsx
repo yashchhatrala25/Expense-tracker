@@ -17,7 +17,7 @@ const DefaultLayout = () => {
 
       <div className="flex">
         <div className="max-[1080px]:hidden">
-          <SideMenu activeMenu={activeMenu} />
+          <SideMenu />
         </div>
 
         <div className="grow mx-5">
