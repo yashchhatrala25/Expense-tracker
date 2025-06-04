@@ -15,7 +15,8 @@ const TransactionInfoCard = ({
   type,
   hideDeleteBtn,
 }) => {
-  const getAmountStyles = () => type === "income" ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500";
+  const getAmountStyles = () =>
+    type === "income" ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500";
 
   return (
     <div className="group relative flex items-center gap-4 mt-2 p-3 rounded-lg hover:bg-gray-100/60">
@@ -47,7 +48,7 @@ const TransactionInfoCard = ({
             className={`flex items-center gap-2 px-3 py-1.5 rounded-md ${getAmountStyles()}`}
           >
             <h6 className="text-xs font-medium">
-              {type === "income" ? "+" : "-"} ${amount}
+              {type === "income" ? "+" : "-"} ₹{amount}
             </h6>
             {type === "income" ? <LuTrendingUp /> : <LuTrendingDown />}
           </div>

@@ -14,21 +14,20 @@ exports.getDashboardData = async (req, res) => {
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
 
-    console.log("totalIncome", {
-      totalIncome,
-      userId: isValidObjectId(userId),
-    });
-
     const totalExpense = await Expense.aggregate([
       { $match: { userId: userObjectId } },
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
 
+    const now = new Date();
+    const sixtyDaysAgo = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000);
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+
     // Get income transaction in the last 60 days
     const last60DaysIncomeTransactions = await Income.find({
       userId,
-      date: { $gte: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000) },
-    }).sort({ date: -1 });
+      createdAt: { $gte: sixtyDaysAgo },
+    }).sort({ createdAt: -1 });
 
     // Get total income for last 60 days
     const incomeLast60Days = last60DaysIncomeTransactions.reduce(
@@ -39,8 +38,8 @@ exports.getDashboardData = async (req, res) => {
     // Get expense transaction in the last 30 days
     const last30DaysExpenseTransaction = await Expense.find({
       userId,
-      date: { $gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) },
-    }).sort({ data: -1 });
+      createdAt: { $gte: thirtyDaysAgo },
+    }).sort({ createdAt: -1 });
 
     // Get total expenses for last 30 days
     const expensesLast30Days = last30DaysExpenseTransaction.reduce(
@@ -62,25 +61,25 @@ exports.getDashboardData = async (req, res) => {
           type: "expense",
         })
       ),
-    ].sort((a, b) => b.data - a.data); // Sort latest first 
+    ].sort((a, b) => new Date(b.date) - new Date(a.date));
 
     // Final Response
     res.json({
-        totalBalance: 
-          (totalIncome[0]?.total || 0) - (totalExpense[0]?.total || 0),
-        totalIncome: totalIncome[0]?.total || 0,
-        totalExpense: totalExpense[0]?.total || 0,
-        last30DaysExpenses: {
-            total: expensesLast30Days,
-            transaction: last30DaysExpenseTransaction
-        },
-        last60DaysIncome: {
-            total: incomeLast60Days,
-            transactions: last60DaysIncomeTransactions
-        },
-        recentTransactions: lastTransactions
-    })
+      totalBalance:
+        (totalIncome[0]?.total || 0) - (totalExpense[0]?.total || 0),
+      totalIncome: totalIncome[0]?.total || 0,
+      totalExpense: totalExpense[0]?.total || 0,
+      last30DaysExpenses: {
+        total: expensesLast30Days,
+        transaction: last30DaysExpenseTransaction,
+      },
+      last60DaysIncome: {
+        total: incomeLast60Days,
+        transactions: last60DaysIncomeTransactions,
+      },
+      recentTransactions: lastTransactions,
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server Error" })
+    res.status(500).json({ message: "Server Error" });
   }
 };
