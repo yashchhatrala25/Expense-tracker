@@ -16,12 +16,12 @@ const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
         <h5 className="text-lg">Financial Overview</h5>
       </div>
 
-      <CustomPieChart 
+      <CustomPieChart
         data={balanceData}
         label="Total Balance"
         totalAmount={totalBalance}
         colors={COLORS}
-        showTextAnchor
+        showTextAnchor={true}
       />
     </div>
   );
