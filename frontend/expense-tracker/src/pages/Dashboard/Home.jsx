@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import DashboardLayout from "../../components/layouts/DashboardLayout";
+import { useEffect, useState } from "react";
 import { useUserAuth } from "../../hooks/useUserAuth";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
@@ -47,7 +46,6 @@ const Home = () => {
   }, []);
 
   return (
-    <DashboardLayout activeMenu="Dashboared">
       <div className="my-5 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <InfoCard
@@ -82,7 +80,6 @@ const Home = () => {
           />
         </div>
       </div>
-    </DashboardLayout>
   );
 };
 
