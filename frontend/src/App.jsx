@@ -14,6 +14,7 @@ import Expense from "./pages/Dashboard/Expense";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import UserProvider from "./context/UserContext";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -21,13 +22,22 @@ const App = () => {
       <div>
         <Router>
           <Routes>
-            <Route path="/" element={<DefaultLayout />}>
-              <Route path="/dashboard" exact element={<Home />} />
-              <Route path="/income" exact element={<Income />} />
-              <Route path="/expense" exact element={<Expense />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signUp" element={<SignUp />} />
+
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <DefaultLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<Home />} />
+              <Route path="income" element={<Income />} />
+              <Route path="expense" element={<Expense />} />
             </Route>
-            <Route path="/login" exact element={<Login />} />
-            <Route path="/signUp" exact element={<SignUp />} />
           </Routes>
         </Router>
       </div>
