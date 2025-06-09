@@ -6,7 +6,7 @@ import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import { validateEmail } from "../../utils/helper";
 import { API_PATHS } from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosInstance";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 import uploadImage from "../../utils/uploadImage";
 
 const SignUp = () => {
@@ -44,10 +44,9 @@ const SignUp = () => {
 
     // SignUp API Call
     try {
-
       // Upload image if present
       if (profilePic) {
-        const imgUploadRes = await uploadImage(profilePic)
+        const imgUploadRes = await uploadImage(profilePic);
         profileImageUrl = imgUploadRes.imageUrl || "";
       }
 
@@ -55,7 +54,7 @@ const SignUp = () => {
         fullName,
         email,
         password,
-        profileImageUrl
+        profileImageUrl,
       });
 
       const { token, user } = response.data;
