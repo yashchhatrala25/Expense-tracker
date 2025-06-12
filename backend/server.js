@@ -23,10 +23,7 @@ app.use(
 
 app.use(express.json());
 
-// connectDB();
-mongoose.connect(
-  "mongodb+srv://yashAdmin:zfpyaAS44fyg2dfj@expensetracker.d9wqidx.mongodb.net/?retryWrites=true&w=majority&appName=expenseTracker"
-);
+connectDB();
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/income", incomeRoutes);
