@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run dev --prefix frontend \" \"npm run dev --prefix backend\" "
+    "start": "concurrently --kill-others \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\" ",
+    "build": "npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
