@@ -15,8 +15,7 @@ const app = express();
 app.use(
   cors({
     origin:
-      process.env.CLIENT_URL ||
-      "https://expense-tracker-flax-three-13.vercel.app",
+      process.env.CLIENT_URL || "https://expense-tracker-73yd.onrender.com",
     method: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
