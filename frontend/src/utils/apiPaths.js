@@ -1,4 +1,5 @@
-export const BASE_URL = "https://expense-tracker-73yd.onrender.com";
+// export const BASE_URL = "https://expense-tracker-73yd.onrender.com";
+export const BASE_URL = "https://expense-tracker-flax-three-13.vercel.app/";
 
 // utils/apiPaths.js
 export const API_PATHS = {
