@@ -4,10 +4,10 @@ import AuthLayout from "../../components/layouts/AuthLayout";
 import Input from "../../components/Inputs/Input";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import { validateEmail } from "../../utils/helper";
-import { API_PATHS } from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosInstance";
 import { UserContext } from "../../context/UserContext";
 import uploadImage from "../../utils/uploadImage";
+import { API_PATHS } from "../../utils/apiPaths";
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
