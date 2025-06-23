@@ -11,6 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  console.log("Login Page Rendered");
 
   const { updateUser } = useContext(UserContext);
 
