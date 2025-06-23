@@ -14,7 +14,9 @@ const app = express();
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin:
+      process.env.CLIENT_URL ||
+      "https://expense-tracker-flax-three-13.vercel.app",
     method: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
