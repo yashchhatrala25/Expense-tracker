@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CustomBarChart from "../Charts/CustomBarChart";
 import { LuPlus } from "react-icons/lu";
 import { prepareIncomeBarChartData } from "../../utils/helper";

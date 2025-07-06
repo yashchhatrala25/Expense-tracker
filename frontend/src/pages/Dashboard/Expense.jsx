@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useUserAuth } from "../../hooks/useUserAuth";
 import { API_PATHS } from "../../utils/apiPaths";
 import toast from "react-hot-toast";
 import ExpenseOverview from "../../components/Expense/ExpenseOverview";
-import AddExpsnseForm from "../../components/Expense/AddExpsnseForm";
+
 import Model from "../../components/Model";
 import axiosInstance from "../../utils/axiosInstance";
 import ExpenseList from "../../components/Expense/ExpenseList";
 import DeleteAlert from "../../components/DeleteAlert";
+import AddExpenseForm from "../../components/Expense/AddExpsnseForm";
 
 const Expense = () => {
   useUserAuth();
@@ -147,7 +148,7 @@ const Expense = () => {
         onClose={() => setOpenAddExpenseModel(false)}
         title="Add Expense"
       >
-        <AddExpsnseForm onAddExpense={handleAddExpense} />
+        <AddExpenseForm onAddExpense={handleAddExpense} />
       </Model>
 
       <Model

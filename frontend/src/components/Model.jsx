@@ -1,5 +1,3 @@
-import React from "react";
-
 const Model = ({ children, isOpen, onClose, title }) => {
   if (!isOpen) return null;
 

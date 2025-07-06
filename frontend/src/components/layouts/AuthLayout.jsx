@@ -1,7 +1,5 @@
-import React from "react";
 import CARD_2 from "../../assets/images/card-2.png";
 import { LuTrendingUpDown } from "react-icons/lu";
-import { PiCurrencyInrBold } from "react-icons/pi";
 
 const AuthLayout = ({ children }) => {
   return (

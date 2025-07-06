@@ -1,9 +1,8 @@
-import EmojiPicker from "emoji-picker-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "../Inputs/Input";
 import EmojiPickerPopup from "../EmojiPickerPopup";
 
-const AddExpsnseForm = ({ onAddExpense }) => {
+const AddExpenseForm = ({ onAddExpense }) => {
   const [income, setIncome] = useState({
     category: "",
     amount: "",
@@ -56,4 +55,4 @@ const AddExpsnseForm = ({ onAddExpense }) => {
   );
 };
 
-export default AddExpsnseForm;
+export default AddExpenseForm;

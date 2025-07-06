@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SIDE_MENU_DATA } from "../../utils/data";
@@ -69,7 +69,7 @@ const SideMenu = () => {
             className={`w-full flex items-center gap-4 text-[15px] py-3 px-6 rounded-lg mb-3
             ${
               activeNavItem === label.toLowerCase()
-                ? "text-white bg-primary" // Replace 'bg-primary' with actual Tailwind color class
+                ? "text-white bg-primary"
                 : "text-gray-800"
             }
           `}
